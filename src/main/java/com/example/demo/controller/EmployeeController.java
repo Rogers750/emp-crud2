@@ -34,7 +34,7 @@ public class EmployeeController {
 		
 		theModel.addAttribute("getAll",employees);
 		
-		return "/employees/listEmployees";
+		return "listEmployees";
 	}
 	
 	@GetMapping("/showFormForAdd")
@@ -47,7 +47,7 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String saveEmployee(@ModelAttribute("employee") Employee emp) {
 		empService.save(emp);
-		return "redirect:/employees/list";
+		return "redirect:showList";
 	}
 	
 	@GetMapping("/updateEmployee")
@@ -61,7 +61,7 @@ public class EmployeeController {
 	public String deleteEmployee(@RequestParam("employeeId")int id) {
 		
 		empService.deleteById(id);
-		return "redirect:/employees/list";
+		return "redirect:showList";
 	}
 
 }
